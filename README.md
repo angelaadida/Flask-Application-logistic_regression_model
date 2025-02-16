@@ -64,20 +64,29 @@ Project Overview
 
 
 9. Making Predictions (Example Usage)
+    
      import numpy as np
      Uses model.predict() to classify the flower.
      Maps prediction to the Iris species name.
 
 
-Summary
+Summary:
+
       Load the Iris dataset (features: Sepal & Petal dimensions, target: flower species).
+      
       Split data into training (70%) and testing (30%).
+      
       Train a Logistic Regression Model using Scikit-Learn.
+      
       Evaluate the model using accuracy score.
+      
       Save the trained model using Joblib.
+      
       Load the saved model for predictions.
 
 
-Deployment Options
+Deployment Options:
+
       Convert this into a Flask API to serve predictions via a web interface.
+      
       Deploy on Heroku, AWS, or Flask locally.
