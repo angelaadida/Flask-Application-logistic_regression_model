@@ -64,9 +64,7 @@ Project Overview
 
 
 9. Making Predictions (Example Usage)
-    import numpy as np
-   
-    # Predict species
+     import numpy as np
      Uses model.predict() to classify the flower.
      Maps prediction to the Iris species name.
 
