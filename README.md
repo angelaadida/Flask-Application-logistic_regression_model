@@ -1,92 +1,125 @@
-Project Overview
+# 🌸 Iris Flower Classification Web App
 
-      This project builds a Logistic Regression Model using Scikit-Learn to classify flowers in the Iris dataset. 
-      
-      The trained model is saved using Joblib for future predictions.
+**Python | Flask | Scikit-learn | Logistic Regression | Joblib**
 
-1. Libraries Used
-      joblib: Saves and loads the trained machine learning model.
-      sklearn.datasets.load_iris: Loads the Iris dataset for classification.
-      sklearn.model_selection.train_test_split: Splits data into training and testing sets.
-      sklearn.linear_model.LogisticRegression: Implements Logistic Regression for classification.
-      sklearn.metrics.accuracy_score: Measures model accuracy.
+A machine learning web application that classifies Iris flowers into 3 species (Setosa, Versicolor, Virginica) based on sepal and petal dimensions, built with Flask and Logistic Regression.
 
-2. Loading the Dataset – Iris Dataset
-      data = load_iris()
-      X = data.data
-      y = data.target
-      The Iris dataset contains 150 samples of iris flowers.
-      Features (X):
-      Sepal length
-      Sepal width
-      Petal length
-      Petal width
-      Target (y):
-      Classifies flowers into three species (Setosa, Versicolor, and Virginica).
+---
 
+## 🚀 How It Works
 
-3. Splitting Data into Training and Testing Sets
+```
+User Input (Sepal & Petal dimensions)
+        ↓
+Flask Web App (app.py)
+        ↓
+Load Trained Model (logistic_regression_model.pkl)
+        ↓
+Logistic Regression Classification
+        ↓
+Display Predicted Iris Species
+```
 
-      X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-      70% training data and 30% testing data.
-      random_state=42 ensures consistent results.    
+---
 
+## 📊 Dataset — Iris Dataset
 
-4. Initializing the Logistic Regression Model
+| Feature | Description |
+|---------|-------------|
+| Sepal Length | Length of sepal (cm) |
+| Sepal Width | Width of sepal (cm) |
+| Petal Length | Length of petal (cm) |
+| Petal Width | Width of petal (cm) |
+| **Target** | **Setosa / Versicolor / Virginica** |
 
-    model = LogisticRegression(max_iter=200)
-    Logistic Regression is used for classification.
-    max_iter=200: Increases the number of iterations to ensure convergence.
-    
+- **150 samples** total — 50 per species
+- Split: **70% training / 30% testing**
 
-5. Training the Model
+---
 
-    model.fit(X_train, y_train)
-    Trains the logistic regression model using the training data.
+## 🛠️ Tech Stack
 
+| Component | Technology |
+|-----------|-----------|
+| Web Framework | Flask |
+| ML Model | Scikit-learn Logistic Regression |
+| Model Serialization | Joblib |
+| Frontend | HTML, CSS |
+| Dataset | Iris (sklearn.datasets) |
+| Language | Python |
 
-6. Evaluating the Model
-    y_pred = model.predict(X_test)
-    print(f"Accuracy: {accuracy_score(y_test, y_pred)}")
-    Uses model.predict() to classify test data.
-    Measures accuracy using accuracy_score().
+---
 
+## 📁 Project Structure
 
-7. Saving the Trained Model Using Joblib
-    joblib.dump(model, 'logistic_regression_model.pkl')
-    Saves the trained model as logistic_regression_model.pkl.
-    Joblib is optimized for saving large models efficiently.
+```
+Flask-Application-logistic_regression_model/
+│
+├── app.py                          # Flask web app & routing
+├── model.py                        # Model training & Joblib serialization
+├── logistic_regression_model.pkl   # Trained Logistic Regression model
+├── index.html                      # Frontend UI
+└── style.css                       # CSS styling
+```
 
+---
 
-8. Loading the Model for Future Predictions
-    loaded_model = joblib.load('logistic_regression_model.pkl')
-    Loads the saved logistic regression model from disk.
+## ⚙️ How to Run Locally
 
+```bash
+# 1. Clone the repo
+git clone https://github.com/angelaadida/Flask-Application-logistic_regression_model.git
+cd Flask-Application-logistic_regression_model
 
-9. Making Predictions (Example Usage)
-    
-     import numpy as np
-     Uses model.predict() to classify the flower.
-     Maps prediction to the Iris species name.
+# 2. Install dependencies
+pip install flask scikit-learn numpy joblib
 
+# 3. Train the model (optional — .pkl already included)
+python model.py
 
-Summary:
+# 4. Run the app
+python app.py
 
-      Load the Iris dataset (features: Sepal & Petal dimensions, target: flower species).
-      
-      Split data into training (70%) and testing (30%).
-      
-      Train a Logistic Regression Model using Scikit-Learn.
-      
-      Evaluate the model using accuracy score.
-      
-      Save the trained model using Joblib.
-      
-      Load the saved model for predictions.
+# 5. Open browser
+http://localhost:5000
+```
 
+---
 
-Deployment Options:
+## 🧠 Model Details
 
-      Convert this into a Flask API to serve predictions via a web interface.
-      
-      Deploy on Heroku, AWS, or Flask locally.
+```python
+# Model training (model.py)
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_iris
+
+model = LogisticRegression(max_iter=200)
+model.fit(X_train, y_train)
+
+# Accuracy evaluation
+accuracy = accuracy_score(y_test, y_pred)
+
+# Save with Joblib
+joblib.dump(model, 'logistic_regression_model.pkl')
+```
+
+---
+
+## 📜 Key Concepts Demonstrated
+
+- ✅ Multi-class classification with Logistic Regression
+- ✅ Train/test split (70/30) with random state
+- ✅ Model accuracy evaluation with accuracy_score
+- ✅ Joblib model serialization & loading
+- ✅ Flask API serving real-time predictions
+- ✅ End-to-end ML web deployment
+
+---
+
+## 👩‍💻 About
+
+Built by **Angela Nguyen Hao** — Data Scientist & BI Specialist
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Angela_Nguyen_Hao-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/angela-n-25945b338)
+[![GitHub](https://img.shields.io/badge/GitHub-angelaadida-181717?style=flat&logo=github&logoColor=white)](https://github.com/angelaadida)
